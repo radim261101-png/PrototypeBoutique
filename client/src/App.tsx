@@ -9,12 +9,14 @@ import Footer from "@/components/Footer";
 import HomePage from "@/pages/HomePage";
 import ProductPage from "@/pages/ProductPage";
 import CategoryPage from "@/pages/CategoryPage";
+import ShopPage from '@/pages/ShopPage';
 import NotFound from "@/pages/not-found";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={HomePage} />
+      <Route path="/shop" component={ShopPage} />
       <Route path="/product/:slug" component={ProductPage} />
       <Route path="/category/:slug" component={CategoryPage} />
       <Route component={NotFound} />

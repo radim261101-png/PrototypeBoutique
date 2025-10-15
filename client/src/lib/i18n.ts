@@ -6,6 +6,7 @@ const resources = {
   en: {
     translation: {
       nav: {
+        shop: 'Shop',
         watches: 'Watches',
         accessories: 'Accessories',
         makeup: 'Makeup',
@@ -50,11 +51,25 @@ const resources = {
         phone: 'Phone',
         rights: 'All rights reserved',
       },
+      shop: {
+        title: 'Shop All Products',
+        category: 'Category',
+        allCategories: 'All Categories',
+        priceRange: 'Price Range',
+        sortBy: 'Sort By',
+        featured: 'Featured',
+        popularity: 'Popularity',
+        priceLowToHigh: 'Price: Low to High',
+        priceHighToLow: 'Price: High to Low',
+        productsFound: '{{count}} products found',
+        noProducts: 'No products found matching your criteria',
+      },
     },
   },
   ar: {
     translation: {
       nav: {
+        shop: 'المتجر',
         watches: 'ساعات',
         accessories: 'إكسسوارات',
         makeup: 'مكياج',
@@ -98,6 +113,19 @@ const resources = {
         email: 'البريد الإلكتروني',
         phone: 'الهاتف',
         rights: 'جميع الحقوق محفوظة',
+      },
+      shop: {
+        title: 'تسوق جميع المنتجات',
+        category: 'الفئة',
+        allCategories: 'جميع الفئات',
+        priceRange: 'نطاق السعر',
+        sortBy: 'ترتيب حسب',
+        featured: 'مميز',
+        popularity: 'الشعبية',
+        priceLowToHigh: 'السعر: من الأقل للأعلى',
+        priceHighToLow: 'السعر: من الأعلى للأقل',
+        productsFound: 'تم العثور على {{count}} منتج',
+        noProducts: 'لم يتم العثور على منتجات تطابق معاييرك',
       },
     },
   },
