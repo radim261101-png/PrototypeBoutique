@@ -1,12 +1,22 @@
-# Boutique Elegance - Luxury eCommerce Platform
+# AURA Luxury (أورا لوكس) - Luxury eCommerce Platform
 
 ## Overview
 
-Boutique Elegance is a bilingual (English/Arabic) luxury eCommerce website specializing in premium watches, accessories, makeup, and gift items. The platform features a sophisticated boutique aesthetic with visual-first merchandising, seamless bilingual support with RTL (right-to-left) layout for Arabic, and a streamlined order placement system. Built as a modern full-stack application, it emphasizes premium presentation and user experience.
+AURA Luxury is a bilingual (English/Arabic) luxury eCommerce website specializing in premium watches, accessories, makeup, and gift items. The platform features a sophisticated boutique aesthetic with visual-first merchandising, seamless bilingual support with RTL (right-to-left) layout for Arabic, and a streamlined order placement system. Built as a modern frontend-only application deployable on Vercel, it emphasizes premium presentation and user experience.
+
+## Recent Updates (October 2024)
+
+- **Rebranded** from "Boutique Elegance" to "AURA Luxury" (أورا لوكس)
+- **Converted to frontend-only**: All data stored in static files (client/src/lib/productsData.ts) and localStorage for orders
+- **Expanded product catalog**: 25 luxury items with realistic, compelling bilingual descriptions
+- **Added SpecialOffer component**: Jewelry sale promotion (up to 30% off) on homepage
+- **Improved mobile responsiveness**: Enhanced touch targets, better text sizing, improved spacing across all breakpoints
+- **Fixed image paths**: All product images moved to client/public/images for Vercel deployment
+- **Repositioned wishlist button**: Moved to top-left corner of product images with smaller size
 
 ## User Preferences
 
-Preferred communication style: Simple, everyday language.
+Preferred communication style: Simple, everyday language (Arabic preferred)
 
 ## System Architecture
 
@@ -33,53 +43,31 @@ Preferred communication style: Simple, everyday language.
 - Bilingual content rendering based on language context
 - RTL layout support for Arabic language
 
-### Backend Architecture
-
-**Technology Stack:**
-- **Runtime:** Node.js with TypeScript
-- **Framework:** Express.js for REST API
-- **Database ORM:** Drizzle ORM
-- **Validation:** Zod schemas for request/response validation
-
-**API Design:**
-- RESTful endpoints for categories, products, and orders
-- JSON-based request/response format
-- Schema validation using Drizzle-Zod integration
-- In-memory storage implementation (MemStorage) with interface for future database integration
-
-**Server Structure:**
-- Modular route registration system
-- Custom logging middleware for API requests
-- Error handling middleware with standardized responses
-- Static file serving for product images from attached_assets directory
-- Development-only Vite middleware integration
-
 ### Data Architecture
 
-**Database Schema (PostgreSQL via Drizzle):**
+**Frontend-Only Data Management:**
+- Static product and category data in `client/src/lib/productsData.ts`
+- Order submissions saved to browser localStorage
+- No backend API or database required
 
-1. **Categories Table:**
-   - Bilingual names (English/Arabic)
-   - URL-friendly slugs
-   - Image references
+**Product Data Structure:**
+- 25 premium products across 4 categories (Watches, Accessories, Makeup, Gifts)
+- Each product includes:
+  - Bilingual names and descriptions (English/Arabic)
+  - Multiple product images (stored in client/public/images/)
+  - Price with currency support
+  - Featured flag for homepage display
+  - Category relationship
 
-2. **Products Table:**
-   - Bilingual names and descriptions
-   - Price with currency support
-   - Multiple images (array)
-   - Featured flag for homepage display
-   - Category relationship via categoryId
-
-3. **Orders Table:**
-   - Customer contact information (name, phone)
-   - Product reference and snapshot data
-   - Quantity and calculated total price
+**Category Structure:**
+- 4 main categories with bilingual names and slugs
+- Each category has its own image
 
 **Design Decisions:**
-- UUID primary keys for all tables
-- Denormalized product name in orders for historical accuracy
-- Array type for product images to support galleries
-- Separate featured flag instead of ordering for flexible featured product selection
+- All images served from client/public/images for Vercel compatibility
+- Featured products displayed prominently on homepage
+- Wishlist stored in localStorage with useWishlist hook
+- Orders stored in localStorage (frontend-only implementation)
 
 ### External Dependencies
 
