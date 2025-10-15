@@ -10,6 +10,7 @@ import HomePage from "@/pages/HomePage";
 import ProductPage from "@/pages/ProductPage";
 import CategoryPage from "@/pages/CategoryPage";
 import ShopPage from '@/pages/ShopPage';
+import WishlistPage from '@/pages/WishlistPage';
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -17,6 +18,7 @@ function Router() {
     <Switch>
       <Route path="/" component={HomePage} />
       <Route path="/shop" component={ShopPage} />
+      <Route path="/wishlist" component={WishlistPage} />
       <Route path="/product/:slug" component={ProductPage} />
       <Route path="/category/:slug" component={CategoryPage} />
       <Route component={NotFound} />

@@ -30,6 +30,7 @@ const resources = {
         description: 'Description',
         placeOrder: 'Place Your Order',
         backToHome: 'Back to Home',
+        backToShop: 'Back to Shop',
       },
       order: {
         title: 'Complete Your Order',
@@ -67,6 +68,15 @@ const resources = {
         productsFound: '{{count}} products found',
         noProducts: 'No products found matching your criteria',
       },
+      wishlist: {
+        title: 'My Wishlist',
+        item: 'item',
+        items: 'items',
+        empty: 'Your wishlist is empty',
+        emptyDescription: 'Start adding products you love to your wishlist',
+        browseProducts: 'Browse Products',
+        clearAll: 'Clear All',
+      },
     },
   },
   ar: {
@@ -96,6 +106,7 @@ const resources = {
         description: 'الوصف',
         placeOrder: 'أكمل طلبك',
         backToHome: 'العودة للرئيسية',
+        backToShop: 'العودة للمتجر',
       },
       order: {
         title: 'أكمل طلبك',
@@ -132,6 +143,15 @@ const resources = {
         priceHighToLow: 'السعر: من الأعلى للأقل',
         productsFound: 'تم العثور على {{count}} منتج',
         noProducts: 'لم يتم العثور على منتجات تطابق معاييرك',
+      },
+      wishlist: {
+        title: 'قائمة أمنياتي',
+        item: 'منتج',
+        items: 'منتجات',
+        empty: 'قائمة أمنياتك فارغة',
+        emptyDescription: 'ابدأ بإضافة المنتجات التي تحبها إلى قائمة أمنياتك',
+        browseProducts: 'تصفح المنتجات',
+        clearAll: 'مسح الكل',
       },
     },
   },

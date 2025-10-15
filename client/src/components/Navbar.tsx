@@ -1,12 +1,13 @@
 import { Link, useLocation } from 'wouter';
 import { useTranslation } from 'react-i18next';
-import { Moon, Sun, Globe, Menu, X, Search } from 'lucide-react';
+import { Moon, Sun, Globe, Menu, X, Search, Heart, ShoppingBag } from 'lucide-react';
 import { useTheme } from './theme-provider';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useState, useRef, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import type { Product } from '@shared/schema';
+import { useWishlist } from '@/hooks/useWishlist';
 
 export default function Navbar() {
   const { t, i18n } = useTranslation();
@@ -17,6 +18,7 @@ export default function Navbar() {
   const [, setLocation] = useLocation();
   const searchRef = useRef<HTMLDivElement>(null);
   const isRTL = i18n.language === 'ar';
+  const { count } = useWishlist();
 
   const { data: products = [] } = useQuery<Product[]>({
     queryKey: ['/api/products'],
@@ -105,7 +107,7 @@ export default function Navbar() {
                 className={`${isRTL ? 'pr-10' : 'pl-10'}`}
                 data-testid="input-search"
               />
-              
+
               {showSuggestions && filteredProducts.length > 0 && (
                 <div className="absolute top-full mt-2 w-full bg-popover border border-border rounded-md shadow-lg z-50 overflow-hidden">
                   {filteredProducts.map((product) => (
@@ -136,6 +138,21 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-2">
+            <Link href="/shop">
+              <Button variant="ghost" data-testid="nav-shop">
+                <ShoppingBag className="h-5 w-5" />
+              </Button>
+            </Link>
+            <Link href="/wishlist">
+              <Button variant="ghost" className="relative" data-testid="nav-wishlist">
+                <Heart className="h-5 w-5" />
+                {count > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                    {count}
+                  </span>
+                )}
+              </Button>
+            </Link>
             <Button
               variant="ghost"
               size="icon"
@@ -186,7 +203,7 @@ export default function Navbar() {
                   className={`${isRTL ? 'pr-10' : 'pl-10'}`}
                   data-testid="input-search-mobile"
                 />
-                
+
                 {showSuggestions && filteredProducts.length > 0 && (
                   <div className="absolute top-full mt-2 w-full bg-popover border border-border rounded-md shadow-lg z-50 overflow-hidden">
                     {filteredProducts.map((product) => (
