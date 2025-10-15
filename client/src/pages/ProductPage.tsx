@@ -67,7 +67,7 @@ export default function ProductPage() {
                   <Button
                     variant="secondary"
                     size="icon"
-                    className="absolute left-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity"
+                    className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity"
                     onClick={prevImage}
                     data-testid="button-prev-image"
                   >
@@ -76,7 +76,7 @@ export default function ProductPage() {
                   <Button
                     variant="secondary"
                     size="icon"
-                    className="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity"
+                    className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity"
                     onClick={nextImage}
                     data-testid="button-next-image"
                   >
@@ -87,7 +87,7 @@ export default function ProductPage() {
             </div>
 
             {product.images.length > 1 && (
-              <div className="grid grid-cols-4 gap-4" data-testid="product-thumbnails">
+              <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-4" data-testid="product-thumbnails">
                 {product.images.map((image, index) => (
                   <button
                     key={index}

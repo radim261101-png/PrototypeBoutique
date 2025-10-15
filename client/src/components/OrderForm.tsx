@@ -85,21 +85,21 @@ export default function OrderForm({ product }: OrderFormProps) {
 
   if (submitted) {
     return (
-      <Card className="p-8 text-center" data-testid="order-success">
+      <Card className="p-6 sm:p-8 text-center" data-testid="order-success">
         <div className="flex flex-col items-center gap-4">
-          <CheckCircle2 className="h-16 w-16 text-chart-2" />
-          <h3 className="text-2xl font-semibold">{t('order.success')}</h3>
-          <p className="text-muted-foreground">{t('order.successMessage')}</p> {/* Using successMessage here too */}
+          <CheckCircle2 className="h-12 sm:h-16 w-12 sm:w-16 text-chart-2" />
+          <h3 className="text-xl sm:text-2xl font-semibold">{t('order.success')}</h3>
+          <p className="text-sm sm:text-base text-muted-foreground">{t('order.successMessage')}</p>
         </div>
       </Card>
     );
   }
 
   return (
-    <Card className="p-6 md:p-8" data-testid="order-form">
-      <div className="flex items-center gap-3 mb-6">
-        <ShoppingBag className="h-6 w-6 text-primary" />
-        <h3 className="text-xl md:text-2xl font-semibold" data-testid="order-form-title">
+    <Card className="p-4 sm:p-6 md:p-8" data-testid="order-form">
+      <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+        <ShoppingBag className="h-5 sm:h-6 w-5 sm:w-6 text-primary" />
+        <h3 className="text-lg sm:text-xl md:text-2xl font-semibold" data-testid="order-form-title">
           {t('order.title')}
         </h3>
       </div>
