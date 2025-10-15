@@ -16,9 +16,9 @@ const resources = {
         placeholder: 'Search products...',
       },
       hero: {
-        title: 'Discover Timeless Elegance',
-        subtitle: 'Curated luxury watches, accessories, and beauty products for the discerning shopper',
-        cta: 'Shop Collection',
+        title: 'Where Luxury Meets Distinction',
+        subtitle: 'Handpicked collections of exquisite timepieces, fine jewelry, and premium cosmetics for those who appreciate the extraordinary',
+        cta: 'Explore Collection',
       },
       home: {
         featured: 'Featured Products',
@@ -42,9 +42,9 @@ const resources = {
         error: 'Please fill in all fields',
       },
       footer: {
-        about: 'About Us',
-        aboutText: 'We curate the finest luxury products from around the world, bringing you timeless elegance and exceptional quality.',
-        categories: 'Categories',
+        about: 'About AURA',
+        aboutText: 'AURA Luxury is your destination for refined sophistication. We source the world\'s most prestigious brands and artisans, delivering unparalleled quality and timeless style to discerning collectors worldwide.',
+        categories: 'Collections',
         policies: 'Policies',
         shipping: 'Shipping & Delivery',
         returns: 'Returns & Exchanges',
@@ -92,9 +92,9 @@ const resources = {
         placeholder: 'البحث عن المنتجات...',
       },
       hero: {
-        title: 'اكتشف الأناقة الخالدة',
-        subtitle: 'ساعات فاخرة منتقاة، إكسسوارات، ومنتجات تجميل للمتسوق المميز',
-        cta: 'تسوق المجموعة',
+        title: 'حيث تلتقي الفخامة بالتميز',
+        subtitle: 'مجموعات منتقاة بعناية من الساعات الفاخرة، المجوهرات الراقية، ومستحضرات التجميل الفاخرة لمن يقدّرون التميز',
+        cta: 'استكشف المجموعة',
       },
       home: {
         featured: 'المنتجات المميزة',
@@ -118,9 +118,9 @@ const resources = {
         error: 'يرجى ملء جميع الحقول',
       },
       footer: {
-        about: 'من نحن',
-        aboutText: 'نقدم أفضل المنتجات الفاخرة من حول العالم، نجلب لك الأناقة الخالدة والجودة الاستثنائية.',
-        categories: 'الفئات',
+        about: 'عن أورا',
+        aboutText: 'أورا لوكس هي وجهتك للتميز الراقي. نستقطب أرقى العلامات التجارية والحرفيين من جميع أنحاء العالم، لنقدم لك جودة لا مثيل لها وأسلوباً خالداً يليق بالذواقة في كل مكان.',
+        categories: 'المجموعات',
         policies: 'السياسات',
         shipping: 'الشحن والتوصيل',
         returns: 'الإرجاع والاستبدال',

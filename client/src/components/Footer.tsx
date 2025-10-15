@@ -101,9 +101,9 @@ export default function Footer() {
               {t('footer.contact')}
             </h3>
             <div className="space-y-3">
-              <a href="mailto:info@boutiqueelegance.com" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors hover-elevate active-elevate-2 rounded-md px-2 py-1" data-testid="footer-email">
+              <a href="mailto:contact@auraluxury.com" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors hover-elevate active-elevate-2 rounded-md px-2 py-1" data-testid="footer-email">
                 <Mail className="h-4 w-4" />
-                <span>info@boutiqueelegance.com</span>
+                <span>contact@auraluxury.com</span>
               </a>
               <a href="tel:+1234567890" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors hover-elevate active-elevate-2 rounded-md px-2 py-1" data-testid="footer-phone">
                 <Phone className="h-4 w-4" />
@@ -115,7 +115,7 @@ export default function Footer() {
 
         <div className="mt-12 pt-8 border-t border-border">
           <p className="text-center text-sm text-muted-foreground" data-testid="footer-copyright">
-            © 2024 {isRTL ? 'بوتيك الأناقة' : 'Boutique Elegance'}. {t('footer.rights')}.
+            © 2024 {isRTL ? 'أورا لوكس' : 'AURA Luxury'}. {t('footer.rights')}.
           </p>
         </div>
       </div>

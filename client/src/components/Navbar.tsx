@@ -75,7 +75,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 md:h-20 gap-4">
           <Link href="/" className="flex items-center hover-elevate active-elevate-2 rounded-md px-3 py-2">
             <h1 className="text-xl md:text-2xl font-serif font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent" data-testid="logo-text">
-              {isRTL ? 'بوتيك الأناقة' : 'Boutique Elegance'}
+              {isRTL ? 'أورا لوكس' : 'AURA Luxury'}
             </h1>
           </Link>
 
