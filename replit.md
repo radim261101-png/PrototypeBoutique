@@ -69,6 +69,25 @@ Preferred communication style: Simple, everyday language (Arabic preferred)
 - Wishlist stored in localStorage with useWishlist hook
 - Orders stored in localStorage (frontend-only implementation)
 
+### Key Components
+
+**SpecialOffer Component:**
+- Promotional banner showing jewelry sale (up to 30% off)
+- Bilingual content with countdown timer
+- Grid of featured jewelry images with discount badges
+- CTA button directing to accessories category
+
+**ProductCard Component:**
+- Wishlist button positioned at top-left (top-right for RTL)
+- Smaller button size (h-8 w-8) for better aesthetics
+- Hover effects and smooth transitions
+
+**Mobile Responsiveness:**
+- Hero section with responsive text sizing (text-3xl to text-7xl)
+- Product page carousel with always-visible navigation on mobile
+- Improved padding and spacing across all breakpoints
+- Full-width CTA buttons on small screens
+
 ### External Dependencies
 
 **Core Libraries:**
