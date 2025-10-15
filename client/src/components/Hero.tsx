@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
-import heroImage from '@assets/images/luxury_boutique_stor_964bcc79.jpg';
 
 export default function Hero() {
   const { t } = useTranslation();
@@ -15,7 +14,7 @@ export default function Hero() {
     <section className="relative min-h-[500px] md:min-h-[600px] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src={heroImage}
+          src="/images/luxury_boutique_stor_964bcc79.jpg"
           alt="Luxury boutique store"
           className="w-full h-full object-cover"
         />

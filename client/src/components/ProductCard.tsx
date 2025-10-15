@@ -37,12 +37,12 @@ export default function ProductCard({ product }: ProductCardProps) {
           />
           <Button
             variant="ghost"
-            size="icon"
-            className={`absolute top-3 ${isRTL ? 'left-3' : 'right-3'} z-10 hover-elevate bg-background/80 backdrop-blur-sm`}
+            size="sm"
+            className={`absolute top-2 ${isRTL ? 'right-2' : 'left-2'} z-10 hover-elevate bg-background/80 backdrop-blur-sm h-8 w-8 p-0`}
             onClick={handleWishlistClick}
             data-testid={`button-wishlist-${product.id}`}
           >
-            <Heart className={`h-5 w-5 ${inWishlist ? 'fill-red-500 text-red-500' : ''}`} />
+            <Heart className={`h-4 w-4 ${inWishlist ? 'fill-red-500 text-red-500' : ''}`} />
           </Button>
         </div>
         <div className="p-6 flex flex-col flex-1">
