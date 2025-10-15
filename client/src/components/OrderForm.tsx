@@ -10,6 +10,13 @@ import { apiRequest } from '@/lib/queryClient';
 import { CheckCircle2, ShoppingBag } from 'lucide-react';
 import type { Product } from '@shared/schema';
 
+// Define a type for the data that will be inserted into localStorage
+interface InsertOrder {
+  customerName: string;
+  customerPhone: string;
+  quantity: number;
+}
+
 interface OrderFormProps {
   product: Product;
 }
@@ -19,7 +26,7 @@ export default function OrderForm({ product }: OrderFormProps) {
   const { toast } = useToast();
   const isRTL = i18n.language === 'ar';
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<InsertOrder>({
     customerName: '',
     customerPhone: '',
     quantity: 1,
@@ -28,27 +35,36 @@ export default function OrderForm({ product }: OrderFormProps) {
   const [submitted, setSubmitted] = useState(false);
 
   const orderMutation = useMutation({
-    mutationFn: async (data: typeof formData) => {
-      const orderData = {
-        customerName: data.customerName,
-        customerPhone: data.customerPhone,
-        productId: product.id,
-        productName: isRTL ? product.nameAr : product.nameEn,
-        quantity: data.quantity,
+    mutationFn: async (orderData: InsertOrder) => {
+      // Save order to localStorage instead of API
+      const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+      const newOrder = {
+        ...orderData,
+        id: crypto.randomUUID(),
+        totalPrice: (parseFloat(product.price) * orderData.quantity).toFixed(2),
+        timestamp: new Date().toISOString(),
       };
-      return await apiRequest('POST', '/api/orders', orderData);
+      orders.push(newOrder);
+      localStorage.setItem('orders', JSON.stringify(orders));
+      return newOrder;
     },
     onSuccess: () => {
-      setSubmitted(true);
+      // Assuming 'form.reset()' was intended for a form ref, but since we're using local state, we'll reset formData
+      setFormData({
+        customerName: '',
+        customerPhone: '',
+        quantity: 1,
+      });
+      setSubmitted(true); // Set submitted to true to show success message
       toast({
         title: t('order.success'),
-        description: t('order.success'),
+        description: t('order.successMessage'), // Assuming successMessage is a translation key
       });
     },
-    onError: () => {
+    onError: (error: Error) => {
       toast({
         title: t('order.error'),
-        description: t('order.error'),
+        description: error.message,
         variant: 'destructive',
       });
     },
@@ -59,7 +75,7 @@ export default function OrderForm({ product }: OrderFormProps) {
     if (!formData.customerName || !formData.customerPhone || formData.quantity < 1) {
       toast({
         title: t('order.error'),
-        description: t('order.error'),
+        description: t('order.error'), // Consider a more specific error message for validation
         variant: 'destructive',
       });
       return;
@@ -73,7 +89,7 @@ export default function OrderForm({ product }: OrderFormProps) {
         <div className="flex flex-col items-center gap-4">
           <CheckCircle2 className="h-16 w-16 text-chart-2" />
           <h3 className="text-2xl font-semibold">{t('order.success')}</h3>
-          <p className="text-muted-foreground">{t('order.success')}</p>
+          <p className="text-muted-foreground">{t('order.successMessage')}</p> {/* Using successMessage here too */}
         </div>
       </Card>
     );

@@ -1,4 +1,6 @@
+
 import { QueryClient, QueryFunction } from "@tanstack/react-query";
+import { mockCategories, mockProducts } from "./mockData";
 
 async function throwIfResNotOk(res: Response) {
   if (!res.ok) {
@@ -29,7 +31,19 @@ export const getQueryFn: <T>(options: {
 }) => QueryFunction<T> =
   ({ on401: unauthorizedBehavior }) =>
   async ({ queryKey }) => {
-    const res = await fetch(queryKey.join("/") as string, {
+    const endpoint = queryKey.join("/") as string;
+    
+    // Use mock data instead of API calls
+    if (endpoint === "/api/categories") {
+      return mockCategories as T;
+    }
+    
+    if (endpoint === "/api/products") {
+      return mockProducts as T;
+    }
+    
+    // For other endpoints, fall back to fetch
+    const res = await fetch(endpoint, {
       credentials: "include",
     });
 
