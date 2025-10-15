@@ -14,15 +14,15 @@ export default function ShopPage() {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
 
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [sortBy, setSortBy] = useState<string>('featured');
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 2000]);
-
   // Calculate max price from products
   const maxPrice = useMemo(() => {
     if (products.length === 0) return 2000;
     return Math.ceil(Math.max(...products.map(p => parseFloat(p.price))));
-  }, [products]);
+  }, []);
+
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [sortBy, setSortBy] = useState<string>('featured');
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, maxPrice]);
 
   // Filter and sort products
   const filteredAndSortedProducts = useMemo(() => {
