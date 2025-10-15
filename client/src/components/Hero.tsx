@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
-import heroImage from '@assets/stock_images/luxury_boutique_stor_964bcc79.jpg';
+import heroImage from '@assets/images/luxury_boutique_stor_964bcc79.jpg';
 
 export default function Hero() {
   const { t } = useTranslation();
