@@ -12,6 +12,9 @@ const resources = {
         makeup: 'Makeup',
         gifts: 'Gifts',
       },
+      search: {
+        placeholder: 'Search products...',
+      },
       hero: {
         title: 'Discover Timeless Elegance',
         subtitle: 'Curated luxury watches, accessories, and beauty products for the discerning shopper',
@@ -74,6 +77,9 @@ const resources = {
         accessories: 'إكسسوارات',
         makeup: 'مكياج',
         gifts: 'هدايا',
+      },
+      search: {
+        placeholder: 'البحث عن المنتجات...',
       },
       hero: {
         title: 'اكتشف الأناقة الخالدة',
