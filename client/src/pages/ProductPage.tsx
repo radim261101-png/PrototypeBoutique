@@ -1,41 +1,19 @@
 import { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import { useRoute, Link } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
 import OrderForm from '@/components/OrderForm';
-import type { Product } from '@shared/schema';
+import { products } from '@/lib/productsData';
 
 export default function ProductPage() {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
   const [, params] = useRoute('/product/:slug');
 
-  const { data: products = [], isLoading } = useQuery<Product[]>({
-    queryKey: ['/api/products'],
-  });
-
   const product = products.find(p => p.slug === params?.slug);
 
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen py-8 md:py-12">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-            <div className="aspect-square bg-muted animate-pulse rounded-lg" />
-            <div className="space-y-6">
-              <div className="h-10 bg-muted animate-pulse rounded w-3/4" />
-              <div className="h-8 bg-muted animate-pulse rounded w-1/4" />
-              <div className="h-32 bg-muted animate-pulse rounded" />
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   if (!product) {
     return (

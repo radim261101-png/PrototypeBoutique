@@ -1,6 +1,5 @@
 
 import { useState, useMemo } from 'react';
-import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
@@ -9,19 +8,11 @@ import ProductCard from '@/components/ProductCard';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
 import { Slider } from '@/components/ui/slider';
-import type { Product, Category } from '@shared/schema';
+import { products, categories } from '@/lib/productsData';
 
 export default function ShopPage() {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
-
-  const { data: products = [], isLoading: productsLoading } = useQuery<Product[]>({
-    queryKey: ['/api/products'],
-  });
-
-  const { data: categories = [], isLoading: categoriesLoading } = useQuery<Category[]>({
-    queryKey: ['/api/categories'],
-  });
 
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [sortBy, setSortBy] = useState<string>('featured');
@@ -68,27 +59,6 @@ export default function ShopPage() {
 
     return filtered;
   }, [products, selectedCategory, sortBy, priceRange]);
-
-  if (categoriesLoading || productsLoading) {
-    return (
-      <div className="min-h-screen py-8 md:py-12">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="h-10 bg-muted animate-pulse rounded w-1/4 mb-8" />
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            <div className="space-y-6">
-              <div className="h-32 bg-muted animate-pulse rounded" />
-              <div className="h-32 bg-muted animate-pulse rounded" />
-            </div>
-            <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[...Array(6)].map((_, i) => (
-                <div key={i} className="aspect-square bg-muted animate-pulse rounded-lg" />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen py-8 md:py-12">
@@ -185,7 +155,7 @@ export default function ShopPage() {
           {/* Products Grid */}
           <div className="lg:col-span-3">
             <div className="mb-4 text-sm text-muted-foreground" data-testid="text-results-count">
-              {t('shop.productsFound', { count: filteredAndSortedProducts.length }, `${filteredAndSortedProducts.length} products found`)}
+              {t('shop.productsFound', `${filteredAndSortedProducts.length} products found`, { count: filteredAndSortedProducts.length })}
             </div>
 
             {filteredAndSortedProducts.length === 0 ? (

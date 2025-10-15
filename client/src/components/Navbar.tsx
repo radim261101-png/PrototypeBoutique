@@ -5,8 +5,7 @@ import { useTheme } from './theme-provider';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useState, useRef, useEffect } from 'react';
-import { useQuery } from '@tanstack/react-query';
-import type { Product } from '@shared/schema';
+import { products } from '@/lib/productsData';
 import { useWishlist } from '@/hooks/useWishlist';
 
 export default function Navbar() {
@@ -19,10 +18,6 @@ export default function Navbar() {
   const searchRef = useRef<HTMLDivElement>(null);
   const isRTL = i18n.language === 'ar';
   const { count } = useWishlist();
-
-  const { data: products = [] } = useQuery<Product[]>({
-    queryKey: ['/api/products'],
-  });
 
   const toggleLanguage = () => {
     const newLang = i18n.language === 'en' ? 'ar' : 'en';

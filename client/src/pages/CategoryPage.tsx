@@ -1,43 +1,19 @@
-import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import { useRoute, Link } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import ProductCard from '@/components/ProductCard';
-import type { Product, Category } from '@shared/schema';
+import { products, categories } from '@/lib/productsData';
 
 export default function CategoryPage() {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
   const [, params] = useRoute('/category/:slug');
 
-  const { data: products = [], isLoading: productsLoading } = useQuery<Product[]>({
-    queryKey: ['/api/products'],
-  });
-
-  const { data: categories = [], isLoading: categoriesLoading } = useQuery<Category[]>({
-    queryKey: ['/api/categories'],
-  });
-
   const category = categories.find(c => c.slug === params?.slug);
   const categoryProducts = products.filter(p => p.categoryId === category?.id);
 
   const categoryName = category ? (isRTL ? category.nameAr : category.nameEn) : '';
-
-  if (categoriesLoading) {
-    return (
-      <div className="min-h-screen py-8 md:py-12">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="h-10 bg-muted animate-pulse rounded w-1/4 mb-8" />
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-            {[...Array(8)].map((_, i) => (
-              <div key={i} className="aspect-square bg-muted animate-pulse rounded-lg" />
-            ))}
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   if (!category) {
     return (
@@ -69,13 +45,7 @@ export default function CategoryPage() {
           {categoryName}
         </h1>
 
-        {productsLoading ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-            {[...Array(8)].map((_, i) => (
-              <div key={i} className="aspect-square bg-muted animate-pulse rounded-lg" />
-            ))}
-          </div>
-        ) : categoryProducts.length === 0 ? (
+        {categoryProducts.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-muted-foreground text-lg">No products found in this category</p>
           </div>
