@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import Hero from '@/components/Hero';
 import ProductCard from '@/components/ProductCard';
 import CategoryCard from '@/components/CategoryCard';
+import SpecialOffer from '@/components/SpecialOffer';
 import { products, categories } from '@/lib/productsData';
 
 export default function HomePage() {
@@ -24,6 +25,8 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      <SpecialOffer />
 
       <section className="bg-card border-y border-card-border py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
